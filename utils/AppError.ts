@@ -11,7 +11,7 @@ export enum HttpCode {
 
 export interface AppErrorArgs {
     name?: string,
-    isOperational: boolean,
+    isOperational?: boolean,
     message: string,
     httpCode: HttpCode
 }
@@ -26,7 +26,8 @@ export class AppError extends Error {
         Object.setPrototypeOf(this, new.target.prototype)
 
         this.name = args.name || "Error"
-        this.isOperational = args.isOperational
+        this.httpCode = args.httpCode
+      
 
         if(args.isOperational !== undefined){
             this.isOperational = args.isOperational

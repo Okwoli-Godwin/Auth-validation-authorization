@@ -1,4 +1,5 @@
 import mongoose, {Document} from "mongoose"
+import { Iuser } from "./User"
 
 export interface reviewT {
     user: mongoose.Schema.Types.ObjectId,
@@ -15,4 +16,9 @@ export interface Iproduct extends Document {
     name: string,
     numberOfReviews: number,
     reviews: reviewT[]
+}
+
+
+export interface addProductToCart extends Iuser {
+    productId: string
 }
